@@ -5,13 +5,11 @@ import inbox_icon from './icons/inbox.svg';
 import projects_icon from './icons/keyboard.svg';
 import archive_icon from './icons/archive.svg';
 import expand_icon from './icons/expand.svg';
-import add_icon from './icons/add.svg';
 
 import today from './modules/today';
 import inbox from './modules/inbox';
 import projects from './modules/projects';
 import archive from './modules/archive';
-import createTask from './modules/todo';
 
 //icons
 const option = document.querySelectorAll('.option_icon');
@@ -91,8 +89,3 @@ archive_option.addEventListener('click', () => {
     }
     pages.appendChild(archive());
 });
-
-//render tasks
-// const task_section = document.querySelector('.task_section');
-// const task = createTask('test', 'lorem impsum sin dolor');
-// task_section.appendChild(task.render());

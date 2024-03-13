@@ -14,6 +14,14 @@ body {
     background-color: #1a1a1a;
 }
 
+@media only screen and (min-width: 720px) {
+    .content {
+        max-width: 70%;
+        margin: 0 auto;
+        padding: 1em;
+    }
+}
+
 .content {
     display: grid;
     grid-template-columns: 1fr 10fr;
@@ -24,8 +32,7 @@ body {
 nav,
 .pages {
     background-color: #282828;
-    border-radius: .25rem;
-    padding: .5em;
+    border-radius: .5rem;
 }
 
 nav {
@@ -50,28 +57,35 @@ nav .option p {
     display: none;
 }
 
-.pages {
-    grid-column: 2/3;
+.page {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 100%;
 }
 
 .page h1 {
     font-size: 2rem;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 
-/* .tasks .add_task {
-    margin: auto auto .5em;
+.page .add_button {
+    margin: auto auto 0;
     border-radius: .5rem;
     padding: .25em;
-} */
+    max-width: 2em;
+}
 
-/* .pages .add_task:hover {
+.page .add_button:hover {
     cursor: pointer;
     background-color: #1a1a1a;
 }
 
+.page_content {
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
 .task {
     color: rgb(187, 182, 182);
-} */
+}
