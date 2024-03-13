@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    color: #FFFDD0;
+}
+
+body {
+    background-color: #1a1a1a;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    gap: .25em;
+    height: 100vh;
+}
+
+nav,
+.pages {
+    background-color: #282828;
+    border-radius: .25rem;
+    padding: .5em;
+}
+
+nav {
+    padding-right: 0;
+}
+
+nav .option {
+    display: flex;
+    align-items: center;
+    gap: .25em;
+    margin-top: 1em;
+    border-radius: .5rem;
+    padding: .25em;
+}
+
+nav .option:hover {
+    cursor: pointer;
+    background-color: #1a1a1a;
+}
+
+nav .option p {
+    display: none;
+}
+
+.pages {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page h1 {
+    font-size: 2rem;
+}
+
+/* .tasks .add_task {
+    margin: auto auto .5em;
+    border-radius: .5rem;
+    padding: .25em;
+} */
+
+/* .pages .add_task:hover {
+    cursor: pointer;
+    background-color: #1a1a1a;
+}
+
+.task {
+    color: rgb(187, 182, 182);
+} */
