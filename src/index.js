@@ -29,19 +29,19 @@ const optionName = document.querySelectorAll('nav .option p');
 //check if page loads on desktop first
 if (document.body.clientWidth >= 768) {
     optionName.forEach(e => {
-        e.style.display = 'contents';
+        e.style.fontSize = '1rem';
     });
 };
 
 window.addEventListener('resize', function () {
     if (document.body.clientWidth >= 768) {
         optionName.forEach(e => {
-            e.style.display = 'contents';
+            e.style.fontSize = '1rem';
         });
     } else {
         if (document.body.clientWidth < 768) {
             optionName.forEach(e => {
-                e.style.display = 'none';
+                e.style.fontSize = '0rem';
             });
         };
     };
@@ -50,7 +50,7 @@ window.addEventListener('resize', function () {
 nav.addEventListener('click', () => {
     if (window.innerWidth < 768) {
         optionName.forEach(e => {
-            e.style.display = 'contents';
+            e.style.fontSize = '1rem';
         });
     };
 });
@@ -58,7 +58,7 @@ nav.addEventListener('click', () => {
 pages.addEventListener('click', () => {
     if (window.innerWidth < 768) {
         optionName.forEach(e => {
-            e.style.display = 'none';
+            e.style.fontSize = '0rem';
         });
     }
 });
