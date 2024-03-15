@@ -5,6 +5,8 @@ import inbox_icon from './icons/inbox.svg';
 import projects_icon from './icons/keyboard.svg';
 import archive_icon from './icons/archive.svg';
 import expand_icon from './icons/expand.svg';
+import collapse_icon from './icons/collapse.svg';
+import add_icon from './icons/add.svg';
 
 import today from './modules/today';
 import inbox from './modules/inbox';
@@ -20,6 +22,10 @@ option[3].src = archive_icon;
 
 const projects_expand = document.querySelector('.projects_expand');
 projects_expand.src = expand_icon;
+const projects_collapse = document.querySelector('.projects_collapse');
+projects_collapse.src = collapse_icon;
+const add_project_btn = document.querySelector('nav .add_project_btn');
+add_project_btn.src = add_icon;
 
 //media query for screen width
 const nav = document.querySelector('nav');
@@ -42,6 +48,9 @@ window.addEventListener('resize', function () {
         if (document.body.clientWidth < 768) {
             optionName.forEach(e => {
                 e.style.fontSize = '0rem';
+                projects_menu.style.display = 'none';
+                projects_collapse.style.display = 'none';
+                projects_expand.style.display = 'block';
             });
         };
     };
@@ -59,6 +68,9 @@ pages.addEventListener('click', () => {
     if (window.innerWidth < 768) {
         optionName.forEach(e => {
             e.style.fontSize = '0rem';
+            projects_menu.style.display = 'none';
+            projects_collapse.style.display = 'none';
+            projects_expand.style.display = 'block';
         });
     }
 });
@@ -80,6 +92,20 @@ inbox_option.addEventListener('click', () => {
         pages.removeChild(pages.children[0]);
     }
     pages.appendChild(inbox());
+});
+
+const projects_option = document.querySelector('.projects');
+const projects_menu = document.querySelector('.projects_menu');
+projects_option.addEventListener('click', () => {
+    if (projects_menu.style.display == 'block') {
+        projects_menu.style.display = 'none';
+        projects_collapse.style.display = 'none';
+        projects_expand.style.display = 'block';
+    } else {
+        projects_menu.style.display = 'block';
+        projects_collapse.style.display = 'block';
+        projects_expand.style.display = 'none';
+    };
 });
 
 const archive_option = document.querySelector('.archive');

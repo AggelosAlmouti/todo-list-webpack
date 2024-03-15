@@ -17,7 +17,7 @@ export default function today() {
     //add task button
     const add_task = new Image();
     add_task.src = add_icon;
-    add_task.classList = 'add_button';
+    add_task.classList = 'button add_task_btn';
     add_task.addEventListener('click', () => {
         const task = createTask('test', 'lorem impsum sin dolor');
         content.appendChild(task.render());

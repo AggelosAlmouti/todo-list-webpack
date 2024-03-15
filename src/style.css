@@ -59,6 +59,15 @@ nav .option p {
     transition: font-size 0.3s;
 }
 
+nav .projects_collapse {
+    display: none;
+}
+
+nav .projects_menu {
+    display: none;
+    margin-left: 1em;
+}
+
 .page {
     display: flex;
     flex-direction: column;
@@ -71,16 +80,19 @@ nav .option p {
     margin-left: 1em;
 }
 
-.page .add_button {
-    margin: auto auto 0;
+.button {
     border-radius: .5rem;
     padding: .25em;
     max-width: 2em;
 }
 
-.page .add_button:hover {
+.button:hover {
     cursor: pointer;
     background-color: #1a1a1a;
+}
+
+.page .add_task_btn {
+    margin: auto auto 0;
 }
 
 .page_content {
