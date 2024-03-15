@@ -1,9 +1,10 @@
+import { javascript } from 'webpack';
 import add_icon from '../icons/add.svg';
 import createTask from './todo';
 
 export default function today() {
     const page = document.createElement('div');
-    page.classList = 'page';
+    page.classList = 'page today';
 
     const title = document.createElement('h1');
     title.innerHTML = 'Today';
@@ -18,9 +19,17 @@ export default function today() {
     const add_task = new Image();
     add_task.src = add_icon;
     add_task.classList = 'button add_task_btn';
+
+    const input_field = document.createElement('textarea');
+    input_field.rows = '1';
+    input_field.classList = 'input_field';
+    input_field.maxLength = '90';
+    content.appendChild(input_field);
+
     add_task.addEventListener('click', () => {
-        const task = createTask('test', 'lorem impsum sin dolor');
-        content.appendChild(task.render());
+        input_field.style.width = '70%';
+        input_field.style.height = '7rem';
+        input_field.style.padding = '1rem';
     });
     page.appendChild(add_task);
 

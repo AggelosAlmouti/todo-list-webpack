@@ -81,7 +81,7 @@ nav .projects_menu {
 }
 
 .button {
-    border-radius: .5rem;
+    border-radius: 15px;
     padding: .25em;
     max-width: 2em;
 }
@@ -99,6 +99,26 @@ nav .projects_menu {
     margin-top: 2em;
     margin-left: 2em;
 }
+
+.today .input_field {
+    /* width: 70%; */
+    /* height: 7rem; */
+    /* padding: 1em; */
+    width: 0rem;
+    height: 0rem;
+    background-color: #1a1a1a;
+    color: rgb(187, 182, 182);
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.today .input_field:focus {
+    outline: none;
+}
+
 
 .task {
     color: rgb(187, 182, 182);
