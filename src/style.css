@@ -14,14 +14,6 @@ body {
     background-color: #1a1a1a;
 }
 
-@media only screen and (min-width: 720px) {
-    .content {
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 1em;
-    }
-}
-
 .content {
     display: grid;
     grid-template-columns: 1fr 10fr;
@@ -86,7 +78,8 @@ nav .projects_menu {
     max-width: 2em;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
     cursor: pointer;
     background-color: #1a1a1a;
 }
@@ -100,10 +93,20 @@ nav .projects_menu {
     margin-left: 2em;
 }
 
+.today .input_container {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+}
+
+.today .button_container {
+    align-self: flex-end;
+    opacity: 0;
+    transition: all .3s;
+    transition-delay: .5s;
+}
+
 .today .input_field {
-    /* width: 70%; */
-    /* height: 7rem; */
-    /* padding: 1em; */
     width: 0rem;
     height: 0rem;
     background-color: #1a1a1a;
@@ -119,7 +122,14 @@ nav .projects_menu {
     outline: none;
 }
 
-
 .task {
     color: rgb(187, 182, 182);
+}
+
+@media (min-width: 700px) {
+    .content {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 1em;
+    }
 }
