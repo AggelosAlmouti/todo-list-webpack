@@ -2,7 +2,7 @@ import add_icon from '../icons/add.svg';
 import date_icon from '../icons/date.svg';
 import prio_tag_icon from '../icons/prio_tag.svg';
 
-import createTask from './todo';
+import createTask from './new_todo';
 
 export default function today() {
     const page = document.createElement('div');
@@ -30,6 +30,11 @@ export default function today() {
     button_container.classList = 'button_container';
     input_container.appendChild(button_container);
 
+    const add_btn = new Image();
+    add_btn.src = add_icon;
+    add_btn.classList = 'button date_btn';
+    button_container.appendChild(add_btn);
+
     const date_btn = new Image();
     date_btn.src = date_icon;
     date_btn.classList = 'button date_btn';
@@ -52,6 +57,14 @@ export default function today() {
         button_container.style.opacity = '1';
     });
     page.appendChild(add_task);
+
+    //add new task
+    add_btn.addEventListener('click', (e) => {
+        if (input_field.value != '') {
+            const new_task = createTask(input_field.value).render();
+            content.appendChild(new_task);
+        };
+    });
 
 
     return page;

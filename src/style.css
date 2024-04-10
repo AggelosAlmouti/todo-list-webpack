@@ -114,7 +114,6 @@ nav .projects_menu {
     border: none;
     border-radius: 5px;
     resize: none;
-    overflow: hidden;
     transition: all 0.3s;
 }
 
@@ -123,7 +122,15 @@ nav .projects_menu {
 }
 
 .task {
+    max-width: 90%;
     color: rgb(187, 182, 182);
+    background-color: #1a1a1a;
+    padding: .5em;
+    border-radius: 5px;
+    margin-top: .5em;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 @media (min-width: 700px) {
