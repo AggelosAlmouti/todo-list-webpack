@@ -14,6 +14,10 @@ export default function new_todo(content, date, priority) {
             const delete_button = new Image();
             delete_button.src = delete_icon;
             delete_button.classList = 'button delete_task_btn';
+            delete_button.addEventListener('click', () => {
+                task_content.classList = '';
+                task_content.innerHTML = '';
+            });
             task_content.appendChild(delete_button);
 
             return task_content;
