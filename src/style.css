@@ -121,7 +121,7 @@ nav .projects_menu {
     outline: none;
 }
 
-.task {
+.new_todo.task_content {
     max-width: 90%;
     color: rgb(187, 182, 182);
     background-color: #1a1a1a;
@@ -131,6 +131,8 @@ nav .projects_menu {
     word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-word;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media (min-width: 700px) {

@@ -61,7 +61,7 @@ export default function today() {
     //add new task
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
-            const new_task = createTask(input_field.value).render();
+            const new_task = createTask(input_field.value, '10/4', '1').render();
             content.appendChild(new_task);
         };
     });
