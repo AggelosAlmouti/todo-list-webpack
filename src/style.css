@@ -75,7 +75,7 @@ nav .projects_menu {
 .button {
     border-radius: 15px;
     padding: .25em;
-    max-width: 2em;
+    max-width: 1.75em;
 }
 
 .button:hover,
@@ -121,8 +121,13 @@ nav .projects_menu {
     outline: none;
 }
 
-.new_todo.task_content {
-    max-width: 90%;
+.new_todo__new_task_container {
+    display: flex;
+    align-items: center;
+}
+
+.new_todo__task_content {
+    width: 90%;
     color: rgb(187, 182, 182);
     background-color: #1a1a1a;
     padding: .5em;
@@ -131,8 +136,28 @@ nav .projects_menu {
     word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-word;
-    display: flex;
-    justify-content: space-between;
+}
+
+.new_todo__task_content:hover,
+.new_todo__task_content:focus {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.new_todo__modal_container {
+    margin: 0 auto;
+    align-self: center;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    background-color: #282828;
+    box-shadow: 0 0 1em rgb(0 0 0/ .3);
+    padding: 2em;
+}
+
+.new_todo__modal_container::backdrop {
+    background-color: black;
+    opacity: .25;
 }
 
 @media (min-width: 700px) {
