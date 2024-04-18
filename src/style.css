@@ -75,7 +75,7 @@ nav .projects_menu {
 .button {
     border-radius: 15px;
     padding: .25em;
-    max-width: 1.75em;
+    max-width: 1.5em;
 }
 
 .button:hover,
@@ -124,24 +124,32 @@ nav .projects_menu {
 .new_todo__new_task_container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    width: 90%;
+    padding: .5em;
+}
+
+.new_todo__new_task_wrapper {
+    display: flex;
+    width: 100%;
 }
 
 .new_todo__task_content {
-    width: 90%;
     color: rgb(187, 182, 182);
-    background-color: #1a1a1a;
-    padding: .5em;
-    border-radius: 5px;
-    margin-top: .5em;
     word-wrap: break-word;
     white-space: pre-wrap;
     word-break: break-word;
+    align-self: flex-start;
+    margin-top: 2px;
+    width: 100%;
 }
 
 .new_todo__task_content:hover,
 .new_todo__task_content:focus {
-    opacity: 0.75;
     cursor: pointer;
+    opacity: .5;
 }
 
 .new_todo__modal_container {
@@ -152,7 +160,41 @@ nav .projects_menu {
     border-radius: 15px;
     background-color: #282828;
     box-shadow: 0 0 1em rgb(0 0 0/ .3);
-    padding: 2em;
+    padding: .5em;
+    min-width: 13em;
+}
+
+.new_todo__modal_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.new_todo__close_modal {
+    font-size: larger;
+    align-self: flex-end;
+}
+
+.new_todo__close_modal:hover {
+    cursor: pointer;
+}
+
+.new_todo__modal_content {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+    padding: .15em;
+    border-radius: 10px;
+}
+
+.new_todo__modal_content:hover,
+.new_todo__modal_content:focus {
+    background-color: #1a1a1a;
+    cursor: pointer;
+}
+
+.new_todo__modal_info {
+    color: white;
+    opacity: .5;
 }
 
 .new_todo__modal_container::backdrop {
