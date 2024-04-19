@@ -36,6 +36,11 @@ export default function new_todo(content, date, priority) {
             const task_content = document.createElement('p');
             task_content.classList = 'new_todo__task_content';
             task_content.innerHTML = content;
+            if(priority == 2) {
+                task_content.style.color = '#8B0000';
+            }else if(priority == 1) {
+                task_content.style.color = 'orange';
+            }
             new_task_wrapper.appendChild(task_content);
 
             const delete_button = new Image();
@@ -71,7 +76,7 @@ export default function new_todo(content, date, priority) {
 
                 const modal_info = document.createElement('div');
                 modal_info.classList = 'new_todo__modal_info';
-                modal_info.innerHTML = `${date}, ${priority}`;
+                modal_info.innerHTML = date;
                 modal_wrapper.appendChild(modal_info);
 
                 const body = document.querySelector('body');

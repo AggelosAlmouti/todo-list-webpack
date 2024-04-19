@@ -129,6 +129,7 @@ nav .projects_menu {
     border-radius: 5px;
     width: 90%;
     padding: .5em;
+    margin-bottom: .5em;
 }
 
 .new_todo__new_task_wrapper {

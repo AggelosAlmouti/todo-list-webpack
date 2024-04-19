@@ -1,6 +1,8 @@
 import add_icon from '../icons/add.svg';
 import date_icon from '../icons/date.svg';
-import prio_tag_icon from '../icons/prio_tag.svg';
+import tag_icon from '../icons/tag.svg';
+import tag_icon_orange from '../icons/tag_orange.svg';
+import tag_icon_red from '../icons/tag_red.svg';
 
 import createTask from './new_todo';
 
@@ -35,14 +37,32 @@ export default function today() {
     add_btn.classList = 'button date_btn';
     button_container.appendChild(add_btn);
 
+    //date button
     const date_btn = new Image();
     date_btn.src = date_icon;
     date_btn.classList = 'button date_btn';
+    date_btn.addEventListener('click', () => {
+        //todo calendar pop up
+    });
     button_container.appendChild(date_btn);
 
+    //priority button
     const tag_btn = new Image();
-    tag_btn.src = prio_tag_icon;
+    tag_btn.src = tag_icon;
     tag_btn.classList = 'button tag_btn';
+    tag_btn.value = 0;
+    tag_btn.addEventListener('click', () => {
+        if (tag_btn.value == 0) {
+            tag_btn.value = 1;
+            tag_btn.src = tag_icon_orange;
+        }else if(tag_btn.value == 1) {
+            tag_btn.value = 2
+            tag_btn.src = tag_icon_red;
+        }else if(tag_btn.value == 2) {
+            tag_btn.value = 0
+            tag_btn.src = tag_icon;
+        }
+    });
     button_container.appendChild(tag_btn);
 
     //add task button
@@ -55,14 +75,17 @@ export default function today() {
         input_field.style.height = '3rem';
         input_field.style.padding = '.5rem';
         button_container.style.opacity = '1';
+        input_field.focus();
     });
     page.appendChild(add_task);
 
     //add new task
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
-            const new_task = createTask(input_field.value, '10/4', '1').render();
+            const new_task = createTask(input_field.value, '10/4', tag_btn.value).render();
             content.appendChild(new_task);
+            input_field.focus();
+            input_field.value = '';
         };
     });
 
