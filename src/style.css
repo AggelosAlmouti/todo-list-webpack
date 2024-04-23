@@ -104,6 +104,26 @@ nav .projects_menu {
     opacity: 0;
     transition: all .3s;
     transition-delay: .5s;
+    display: flex;
+    margin-top: .5em;
+}
+
+.datepicker_input {
+    width: 1.1em;
+    background-color: #282828;
+    border: none;
+    outline: none;
+    font-size: large;
+}
+
+.datepicker_input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url(./icons/date.svg);
+}
+
+.datepicker_input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+    background-color: #1a1a1a;
+    border-radius: 15px;
 }
 
 .today .input_field {

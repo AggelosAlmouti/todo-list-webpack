@@ -76,7 +76,8 @@ export default function new_todo(content, date, priority) {
 
                 const modal_info = document.createElement('div');
                 modal_info.classList = 'new_todo__modal_info';
-                modal_info.innerHTML = date;
+                let formatted_date = date.split('-');
+                modal_info.innerHTML = formatted_date[2]+'/'+formatted_date[1]+'/'+formatted_date[0];
                 modal_wrapper.appendChild(modal_info);
 
                 const body = document.querySelector('body');

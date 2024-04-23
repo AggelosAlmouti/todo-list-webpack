@@ -1,5 +1,4 @@
 import add_icon from '../icons/add.svg';
-import date_icon from '../icons/date.svg';
 import tag_icon from '../icons/tag.svg';
 import tag_icon_orange from '../icons/tag_orange.svg';
 import tag_icon_red from '../icons/tag_red.svg';
@@ -37,14 +36,11 @@ export default function today() {
     add_btn.classList = 'button date_btn';
     button_container.appendChild(add_btn);
 
-    //date button
-    const date_btn = new Image();
-    date_btn.src = date_icon;
-    date_btn.classList = 'button date_btn';
-    date_btn.addEventListener('click', () => {
-        //todo calendar pop up
-    });
-    button_container.appendChild(date_btn);
+    //datepicker
+    const datepicker_input = document.createElement('input');
+    datepicker_input.type = 'date';
+    datepicker_input.classList = 'datepicker_input';
+    button_container.appendChild(datepicker_input);
 
     //priority button
     const tag_btn = new Image();
@@ -82,7 +78,7 @@ export default function today() {
     //add new task
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
-            const new_task = createTask(input_field.value, '10/4', tag_btn.value).render();
+            const new_task = createTask(input_field.value, datepicker_input.value, tag_btn.value).render();
             content.appendChild(new_task);
             input_field.focus();
             input_field.value = '';
