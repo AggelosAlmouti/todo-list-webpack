@@ -3,12 +3,15 @@ import delete_icon from '../icons/delete.svg';
 import checked_icon from '../icons/checked.svg';
 import unchecked_icon from '../icons/unchecked.svg';
 
-export default function new_todo(content, date, priority) {
+
+export default function new_todo(id, content, date, priority) {
     return {
+        id: id,
         content: content,
         date: date,
         priority: priority,
         render: function () {
+
             const new_task_container = document.createElement('div');
             new_task_container.classList = 'new_todo__new_task_container';
 
@@ -36,9 +39,9 @@ export default function new_todo(content, date, priority) {
             const task_content = document.createElement('p');
             task_content.classList = 'new_todo__task_content';
             task_content.innerHTML = content;
-            if(priority == 2) {
+            if (priority == 2) {
                 task_content.style.color = '#8B0000';
-            }else if(priority == 1) {
+            } else if (priority == 1) {
                 task_content.style.color = 'orange';
             }
             new_task_wrapper.appendChild(task_content);
@@ -49,6 +52,7 @@ export default function new_todo(content, date, priority) {
             delete_button.addEventListener('click', () => {
                 new_task_container.innerHTML = '';
                 new_task_container.classList = '';
+                localStorage.removeItem(id);
             });
             new_task_container.appendChild(delete_button);
 
@@ -77,15 +81,14 @@ export default function new_todo(content, date, priority) {
                 const modal_info = document.createElement('div');
                 modal_info.classList = 'new_todo__modal_info';
                 let formatted_date = date.split('-');
-                modal_info.innerHTML = formatted_date[2]+'/'+formatted_date[1]+'/'+formatted_date[0];
+                modal_info.innerHTML = formatted_date[2] + '/' + formatted_date[1] + '/' + formatted_date[0];
                 modal_wrapper.appendChild(modal_info);
 
                 const body = document.querySelector('body');
                 body.appendChild(modal_container);
                 modal_container.showModal();
             });
-
             return new_task_container;
-        },
+        }
     };
 };

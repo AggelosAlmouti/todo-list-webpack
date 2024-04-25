@@ -2,8 +2,25 @@ import add_icon from '../icons/add.svg';
 import tag_icon from '../icons/tag.svg';
 import tag_icon_orange from '../icons/tag_orange.svg';
 import tag_icon_red from '../icons/tag_red.svg';
+import new_todo from './new_todo';
 
 import createTask from './new_todo';
+
+function save(id, content, date, priority) {
+    let task = { id: id, content: content, date: date, priority: priority };
+    localStorage.setItem(id, JSON.stringify(task));
+};
+
+function retreive_all() {
+    var tasks = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+    while (i--) {
+        tasks.push(JSON.parse(localStorage.getItem(keys[i])));
+    };
+
+    return tasks;
+};
 
 export default function today() {
     const page = document.createElement('div');
@@ -51,10 +68,10 @@ export default function today() {
         if (tag_btn.value == 0) {
             tag_btn.value = 1;
             tag_btn.src = tag_icon_orange;
-        }else if(tag_btn.value == 1) {
+        } else if (tag_btn.value == 1) {
             tag_btn.value = 2
             tag_btn.src = tag_icon_red;
-        }else if(tag_btn.value == 2) {
+        } else if (tag_btn.value == 2) {
             tag_btn.value = 0
             tag_btn.src = tag_icon;
         }
@@ -76,10 +93,27 @@ export default function today() {
     page.appendChild(add_task);
 
     //add new task
+    let tasks = retreive_all();
+    let task_id = 0;
+    //fixme id values aren't consistent
+    console.log(tasks);
+
+    if (tasks.length !== 0) {
+        task_id = tasks.length;
+
+        for (let i = 0; i < tasks.length; i++) {
+            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority).render();
+            content.appendChild(new_task);
+        };
+    };
+
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
-            const new_task = createTask(input_field.value, datepicker_input.value, tag_btn.value).render();
+            const new_task = createTask(task_id, input_field.value, datepicker_input.value, tag_btn.value).render();
             content.appendChild(new_task);
+            save(task_id, input_field.value, datepicker_input.value, tag_btn.value);
+            task_id++;
+
             input_field.focus();
             input_field.value = '';
         };
