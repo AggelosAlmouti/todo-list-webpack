@@ -2,13 +2,12 @@ import add_icon from '../icons/add.svg';
 import tag_icon from '../icons/tag.svg';
 import tag_icon_orange from '../icons/tag_orange.svg';
 import tag_icon_red from '../icons/tag_red.svg';
-import new_todo from './new_todo';
 
 import createTask from './new_todo';
 
 function save(id, content, date, priority) {
     let task = { id: id, content: content, date: date, priority: priority };
-    localStorage.setItem(id, JSON.stringify(task));
+    localStorage.setItem(id, JSON.stringify(task)); 
 };
 
 function retreive_all() {
@@ -95,21 +94,18 @@ export default function today() {
     //add new task
     let tasks = retreive_all();
     let task_id = 0;
-    //fixme id values aren't consistent
-    console.log(tasks);
 
     if (tasks.length !== 0) {
-        task_id = tasks.length;
-
         for (let i = 0; i < tasks.length; i++) {
-            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority).render();
+            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority, tasks[i].complete).render();
             content.appendChild(new_task);
+            task_id++;
         };
     };
 
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
-            const new_task = createTask(task_id, input_field.value, datepicker_input.value, tag_btn.value).render();
+            const new_task = createTask(task_id, input_field.value, datepicker_input.value, tag_btn.value, false).render();
             content.appendChild(new_task);
             save(task_id, input_field.value, datepicker_input.value, tag_btn.value);
             task_id++;
