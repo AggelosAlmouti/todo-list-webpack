@@ -20,13 +20,6 @@ option[1].src = inbox_icon;
 option[2].src = projects_icon;
 option[3].src = archive_icon;
 
-const projects_expand = document.querySelector('.projects_expand');
-projects_expand.src = expand_icon;
-const projects_collapse = document.querySelector('.projects_collapse');
-projects_collapse.src = collapse_icon;
-const add_project_btn = document.querySelector('nav .add_project_btn');
-add_project_btn.src = add_icon;
-
 //media query for screen width
 const nav = document.querySelector('nav');
 const pages = document.querySelector('.pages');
@@ -82,7 +75,7 @@ const today_option = document.querySelector('.today');
 today_option.addEventListener('click', () => {
     if (pages.hasChildNodes()) {
         pages.removeChild(pages.children[0]);
-    }
+    };
     pages.appendChild(today());
 });
 
@@ -90,9 +83,17 @@ const inbox_option = document.querySelector('.inbox');
 inbox_option.addEventListener('click', () => {
     if (pages.hasChildNodes()) {
         pages.removeChild(pages.children[0]);
-    }
+    };
     pages.appendChild(inbox());
 });
+
+//projects
+const projects_expand = document.querySelector('.projects_expand');
+projects_expand.src = expand_icon;
+const projects_collapse = document.querySelector('.projects_collapse');
+projects_collapse.src = collapse_icon;
+const add_project_btn = document.querySelector('nav .add_project_btn');
+add_project_btn.src = add_icon;
 
 const projects_option = document.querySelector('.projects');
 const projects_menu = document.querySelector('.projects_menu');
@@ -108,10 +109,50 @@ projects_option.addEventListener('click', () => {
     };
 });
 
+//modal for new projects
+add_project_btn.addEventListener('click', () => {
+
+    const modal_container = document.createElement('dialog');
+    modal_container.classList = 'modal_container';
+    const body = document.querySelector('body');
+    body.appendChild(modal_container);
+    modal_container.showModal();
+
+    const modal_wrapper = document.createElement('div');
+    modal_wrapper.classList = 'modal_wrapper index_projects_modal_wrapper';
+    modal_container.appendChild(modal_wrapper);
+
+    const close_modal = document.createElement('div');
+    close_modal.classList = 'close_modal';
+    close_modal.innerHTML = 'x';
+    close_modal.addEventListener('click', () => {
+        modal_container.close();
+    });
+    modal_wrapper.appendChild(close_modal);
+
+    const modal_title = document.createElement('h2');
+    modal_title.innerHTML = 'New Project:';
+    modal_wrapper.appendChild(modal_title);
+
+    const modal_input = document.createElement('input');
+    modal_input.type = 'text';
+    modal_input.maxLength = '23';
+    modal_wrapper.appendChild(modal_input);
+
+    modal_input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const new_project = document.createElement('p');
+            new_project.classList = 'menu_new_project';
+            new_project.innerHTML = modal_input.value;
+            projects_menu.appendChild(new_project);
+        };
+    });
+});
+
 const archive_option = document.querySelector('.archive');
 archive_option.addEventListener('click', () => {
     if (pages.hasChildNodes()) {
         pages.removeChild(pages.children[0]);
-    }
+    };
     pages.appendChild(archive());
 });

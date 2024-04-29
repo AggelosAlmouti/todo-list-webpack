@@ -83,6 +83,7 @@ export default function today() {
     add_task.classList = 'button add_task_btn';
 
     add_task.addEventListener('click', () => {
+        input_container.style.height = 'fit-content';
         input_field.style.width = '100%';
         input_field.style.height = '3rem';
         input_field.style.padding = '.5rem';
@@ -91,7 +92,7 @@ export default function today() {
     });
     page.appendChild(add_task);
 
-    //add new task
+    //retrieve all tasks
     let tasks = retreive_all();
     let task_id = 0;
 
@@ -103,6 +104,7 @@ export default function today() {
         };
     };
 
+    //add new task
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
             const new_task = createTask(task_id, input_field.value, datepicker_input.value, tag_btn.value, false).render();

@@ -68,14 +68,14 @@ export default function new_todo(id, content, date, priority, complete) {
             //modal
             task_content.addEventListener('click', () => {
                 const modal_container = document.createElement('dialog');
-                modal_container.classList = 'new_todo__modal_container';
+                modal_container.classList = 'modal_container';
 
                 const modal_wrapper = document.createElement('div');
-                modal_wrapper.classList = 'new_todo__modal_wrapper';
+                modal_wrapper.classList = 'modal_wrapper';
                 modal_container.appendChild(modal_wrapper);
 
                 const close_modal = document.createElement('div');
-                close_modal.classList = 'new_todo__close_modal';
+                close_modal.classList = 'close_modal';
                 close_modal.innerHTML = 'x';
                 close_modal.addEventListener('click', () => {
                     modal_container.close();
@@ -83,14 +83,14 @@ export default function new_todo(id, content, date, priority, complete) {
                 modal_wrapper.appendChild(close_modal);
 
                 const modal_content = document.createElement('p');
-                modal_content.classList = 'new_todo__modal_content';
+                modal_content.classList = 'modal_content';
                 modal_content.innerHTML = content;
                 modal_content.style.color = task_content.style.color;
                 modal_wrapper.appendChild(modal_content);
 
                 if (date) {
                     const modal_info = document.createElement('div');
-                    modal_info.classList = 'new_todo__modal_info';
+                    modal_info.classList = 'modal_info';
                     let formatted_date = date.split('-');
                     modal_info.innerHTML = formatted_date[2] + '/' + formatted_date[1] + '/' + formatted_date[0];
                     modal_wrapper.appendChild(modal_info);

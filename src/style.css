@@ -97,6 +97,7 @@ nav .projects_menu {
     display: flex;
     flex-direction: column;
     max-width: 90%;
+    height: 0;
 }
 
 .today .button_container {
@@ -173,7 +174,7 @@ nav .projects_menu {
     opacity: .5;
 }
 
-.new_todo__modal_container {
+.modal_container {
     margin: 0 auto;
     align-self: center;
     outline: none;
@@ -185,21 +186,21 @@ nav .projects_menu {
     min-width: 13em;
 }
 
-.new_todo__modal_wrapper {
+.modal_wrapper {
     display: flex;
     flex-direction: column;
 }
 
-.new_todo__close_modal {
+.close_modal {
     font-size: larger;
     align-self: flex-end;
 }
 
-.new_todo__close_modal:hover {
+.close_modal:hover {
     cursor: pointer;
 }
 
-.new_todo__modal_content {
+.modal_content {
     font-weight: bold;
     font-size: 1.5rem;
     margin-bottom: 1em;
@@ -207,20 +208,34 @@ nav .projects_menu {
     border-radius: 10px;
 }
 
-.new_todo__modal_content:hover,
-.new_todo__modal_content:focus {
+.modal_content:hover,
+.modal_content:focus {
     background-color: #1a1a1a;
     cursor: pointer;
 }
 
-.new_todo__modal_info {
+.modal_info {
     color: white;
     opacity: .5;
 }
 
-.new_todo__modal_container::backdrop {
+.modal_container::backdrop {
     background-color: black;
     opacity: .25;
+}
+
+.index_projects_modal_wrapper {
+    display: flex;
+}
+
+.index_projects_modal_wrapper input {
+    background-color: #1a1a1a;
+    border: 1px black solid;
+    border-radius: 5px;
+    padding: .5em;
+    font-size: 1rem;
+    margin-top: 1em;
+    outline: none;
 }
 
 @media (min-width: 700px) {
