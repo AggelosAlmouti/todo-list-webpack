@@ -93,14 +93,14 @@ nav .projects_menu {
     margin-left: 2em;
 }
 
-.today .input_container {
+.input_container {
     display: flex;
     flex-direction: column;
     max-width: 90%;
     height: 0;
 }
 
-.today .button_container {
+.button_container {
     align-self: flex-end;
     opacity: 0;
     transition: all .3s;
@@ -127,7 +127,7 @@ nav .projects_menu {
     border-radius: 15px;
 }
 
-.today .input_field {
+.input_field {
     width: 0rem;
     height: 0rem;
     background-color: #1a1a1a;
@@ -138,7 +138,7 @@ nav .projects_menu {
     transition: all 0.3s;
 }
 
-.today .input_field:focus {
+.input_field:focus {
     outline: none;
 }
 
@@ -150,7 +150,7 @@ nav .projects_menu {
     border-radius: 5px;
     width: 90%;
     padding: .5em;
-    margin-bottom: .5em;
+    margin-top: 1em;
 }
 
 .new_todo__new_task_wrapper {
@@ -236,6 +236,17 @@ nav .projects_menu {
     font-size: 1rem;
     margin-top: 1em;
     outline: none;
+}
+
+.menu_new_project {
+    border-radius: .5rem;
+    padding: .25em;
+}
+
+.menu_new_project:hover,
+.menu_new_project:focus {
+    cursor: pointer;
+    background-color: #1a1a1a;
 }
 
 @media (min-width: 700px) {

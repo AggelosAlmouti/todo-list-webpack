@@ -5,7 +5,7 @@ import tag_icon_red from '../icons/tag_red.svg';
 
 import createTask from './new_todo';
 
-const prefix = 'today_'
+const prefix = 'pr_1'
 
 function save(id, content, date, priority) {
     let task = { id: id, content: content, date: date, priority: priority };
@@ -25,13 +25,13 @@ function retreive_all() {
     return tasks;
 };
 
-export default function today() {
-    
+export default function project(project_name) {
+
     const page = document.createElement('div');
-    page.classList = 'page today';
+    page.classList = 'page project';
 
     const title = document.createElement('h1');
-    title.innerHTML = 'Today';
+    title.innerHTML = project_name;
     page.appendChild(title);
 
     //tasks
@@ -122,7 +122,6 @@ export default function today() {
             input_field.value = '';
         };
     });
-
 
     return page;
 };

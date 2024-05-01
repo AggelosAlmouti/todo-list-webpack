@@ -10,7 +10,7 @@ import add_icon from './icons/add.svg';
 
 import today from './modules/today';
 import inbox from './modules/inbox';
-import projects from './modules/projects';
+import project from './modules/project';
 import archive from './modules/archive';
 
 //icons
@@ -144,9 +144,19 @@ add_project_btn.addEventListener('click', () => {
             const new_project = document.createElement('p');
             new_project.classList = 'menu_new_project';
             new_project.innerHTML = modal_input.value;
+            // localStorage.setItem('project', new_project.innerHTML);
+            //fixme save and retrieve project names
+
+            new_project.addEventListener('click', () => {
+                if (pages.hasChildNodes()) {
+                    pages.removeChild(pages.children[0]);
+                };
+                pages.appendChild(project(new_project.innerHTML));
+            });
             projects_menu.appendChild(new_project);
         };
     });
+
 });
 
 const archive_option = document.querySelector('.archive');
