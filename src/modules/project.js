@@ -5,20 +5,22 @@ import tag_icon_red from '../icons/tag_red.svg';
 
 import createTask from './new_todo';
 
-const prefix = 'pr_1'
 
-function save(id, content, date, priority) {
-    let task = { id: id, content: content, date: date, priority: priority };
-    localStorage.setItem(id, JSON.stringify(task));
+function save(id, content, date, priority, complete, project) {
+    let task = { id, content, date, priority, complete, project };
+    localStorage.setItem(task.id, JSON.stringify(task));
 };
 
-function retreive_all() {
+function retreive_all(title) {
     let tasks = [],
         keys = Object.keys(localStorage),
         i = keys.length;
     while (i--) {
-        if (localStorage.key(i).substring(0, 6) == prefix) {
-            tasks.push(JSON.parse(localStorage.getItem(keys[i])));
+        if (keys[i] != 'projects') {
+            let item = JSON.parse(localStorage.getItem(keys[i]));
+            if (item.project == title) {
+                tasks.push(JSON.parse(localStorage.getItem(keys[i])));
+            };
         };
     };
 
@@ -98,12 +100,13 @@ export default function project(project_name) {
     page.appendChild(add_task);
 
     //retrieve all tasks
-    let tasks = retreive_all();
-    let task_id = 0;
+    let tasks = retreive_all(title.innerHTML);
+    let task_id = tasks.length;
+    console.log(task_id + ' project task id')
 
     if (tasks.length !== 0) {
         for (let i = 0; i < tasks.length; i++) {
-            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority, tasks[i].complete).render();
+            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority, tasks[i].complete, tasks[i].project).render();
             content.appendChild(new_task);
             task_id++;
         };
@@ -112,10 +115,9 @@ export default function project(project_name) {
     //add new task
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
-            let key = prefix + task_id;
-            const new_task = createTask(key, input_field.value, datepicker_input.value, tag_btn.value, false).render();
+            const new_task = createTask(task_id, input_field.value, datepicker_input.value, tag_btn.value, false, title.innerHTML).render();
             content.appendChild(new_task);
-            save(key, input_field.value, datepicker_input.value, tag_btn.value);
+            save(task_id, input_field.value, datepicker_input.value, tag_btn.value, false, title.innerHTML);
             task_id++;
 
             input_field.focus();

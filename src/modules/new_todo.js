@@ -3,13 +3,14 @@ import checked_icon from '../icons/checked.svg';
 import unchecked_icon from '../icons/unchecked.svg';
 
 
-export default function new_todo(id, content, date, priority, complete) {
+export default function new_todo(id, content, date, priority, complete, project) {
     return {
         id: id,
         content: content,
         date: date,
         priority: priority,
         complete: complete,
+        project: project,
         render: function () {
 
             const new_task_container = document.createElement('div');
@@ -100,6 +101,7 @@ export default function new_todo(id, content, date, priority, complete) {
                 body.appendChild(modal_container);
                 modal_container.showModal();
             });
+            
             return new_task_container;
         }
     };

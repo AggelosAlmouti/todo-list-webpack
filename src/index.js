@@ -13,6 +13,19 @@ import inbox from './modules/inbox';
 import project from './modules/project';
 import archive from './modules/archive';
 
+function retreive_all() {
+    let projects = [],
+        keys = Object.keys(localStorage),
+        i = keys.length;
+    while (i--) {
+        if (keys[i] == 'projects') {
+            projects = JSON.parse(localStorage.getItem(keys[i]));
+        };
+    };
+
+    return projects;
+};
+
 //icons
 const option = document.querySelectorAll('.option_icon');
 option[0].src = today_icon;
@@ -109,6 +122,24 @@ projects_option.addEventListener('click', () => {
     };
 });
 
+//retrieve all projects
+let projects = retreive_all();
+if (projects.length !== 0) {
+    for (let i = 0; i < projects.length; i++) {
+        const new_project = document.createElement('p');
+        new_project.classList = 'menu_new_project';
+        new_project.innerHTML = projects[i];
+
+        new_project.addEventListener('click', () => {
+            if (pages.hasChildNodes()) {
+                pages.removeChild(pages.children[0]);
+            };
+            pages.appendChild(project(new_project.innerHTML));
+        });
+        projects_menu.appendChild(new_project);
+    };
+};
+
 //modal for new projects
 add_project_btn.addEventListener('click', () => {
 
@@ -144,8 +175,9 @@ add_project_btn.addEventListener('click', () => {
             const new_project = document.createElement('p');
             new_project.classList = 'menu_new_project';
             new_project.innerHTML = modal_input.value;
-            // localStorage.setItem('project', new_project.innerHTML);
-            //fixme save and retrieve project names
+            projects.push(new_project.innerHTML);
+
+            localStorage.setItem('projects', JSON.stringify(projects));
 
             new_project.addEventListener('click', () => {
                 if (pages.hasChildNodes()) {

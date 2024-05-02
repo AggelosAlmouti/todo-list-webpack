@@ -5,7 +5,9 @@ function retreive_all() {
         keys = Object.keys(localStorage),
         i = keys.length;
     while (i--) {
-        tasks.push(JSON.parse(localStorage.getItem(keys[i])));
+        if (keys[i] != 'projects') {
+            tasks.push(JSON.parse(localStorage.getItem(keys[i])));
+        };
     };
 
     return tasks;
@@ -25,11 +27,13 @@ export default function inbox() {
     page.appendChild(content);
 
     //retrieve all tasks
+    // localStorage.clear()
     let tasks = retreive_all();
+    console.log(tasks)
 
     if (tasks.length !== 0) {
         for (let i = 0; i < tasks.length; i++) {
-            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority, tasks[i].complete).render();
+            const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority, tasks[i].complete, tasks[i].project).render();
             content.appendChild(new_task);
         };
     };
