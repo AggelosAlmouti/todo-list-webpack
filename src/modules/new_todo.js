@@ -48,7 +48,7 @@ export default function new_todo(id, content, date, priority, complete, project)
                     complete_btn.src = unchecked_icon;
                     task_content.style.opacity = '1';
                 };
-                let task = { id: id, content: content, date: date, priority: priority, complete: this.complete };
+                let task = { id, content, date, priority, complete: this.complete, project };
                 localStorage.setItem(id, JSON.stringify(task));
             });
             new_task_wrapper.appendChild(complete_btn);
@@ -89,19 +89,29 @@ export default function new_todo(id, content, date, priority, complete, project)
                 modal_content.style.color = task_content.style.color;
                 modal_wrapper.appendChild(modal_content);
 
+                const modal_info = document.createElement('div');
+                modal_info.classList = 'modal_info';
+                modal_wrapper.appendChild(modal_info);
+
+                const date_info = document.createElement('span');
+                date_info.classList = 'modal_date_info';
+                date_info.innerHTML = '-/-/-';
                 if (date) {
-                    const modal_info = document.createElement('div');
-                    modal_info.classList = 'modal_info';
                     let formatted_date = date.split('-');
-                    modal_info.innerHTML = formatted_date[2] + '/' + formatted_date[1] + '/' + formatted_date[0];
-                    modal_wrapper.appendChild(modal_info);
+                    date_info.innerHTML = formatted_date[2] + '/' + formatted_date[1] + '/' + formatted_date[0];
                 };
+                modal_info.appendChild(date_info);
+
+                const project_family = document.createElement('span');
+                project_family.classList = 'modal_project_family';
+                project_family.innerHTML = project;
+                modal_info.appendChild(project_family);
 
                 const body = document.querySelector('body');
                 body.appendChild(modal_container);
                 modal_container.showModal();
             });
-            
+
             return new_task_container;
         }
     };

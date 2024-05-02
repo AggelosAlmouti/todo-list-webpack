@@ -4,6 +4,7 @@ import tag_icon_orange from '../icons/tag_orange.svg';
 import tag_icon_red from '../icons/tag_red.svg';
 
 import createTask from './new_todo';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function save(id, content, date, priority, complete, project) {
@@ -101,24 +102,21 @@ export default function project(project_name) {
 
     //retrieve all tasks
     let tasks = retreive_all(title.innerHTML);
-    let task_id = tasks.length;
-    console.log(task_id + ' project task id')
 
     if (tasks.length !== 0) {
         for (let i = 0; i < tasks.length; i++) {
             const new_task = createTask(tasks[i].id, tasks[i].content, tasks[i].date, tasks[i].priority, tasks[i].complete, tasks[i].project).render();
             content.appendChild(new_task);
-            task_id++;
         };
     };
 
     //add new task
     add_btn.addEventListener('click', (e) => {
         if (input_field.value != '') {
+            const task_id = uuidv4();
             const new_task = createTask(task_id, input_field.value, datepicker_input.value, tag_btn.value, false, title.innerHTML).render();
             content.appendChild(new_task);
             save(task_id, input_field.value, datepicker_input.value, tag_btn.value, false, title.innerHTML);
-            task_id++;
 
             input_field.focus();
             input_field.value = '';

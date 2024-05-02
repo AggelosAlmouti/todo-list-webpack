@@ -7,11 +7,11 @@
     list-style: none;
     text-decoration: none;
     font-family: Roboto, sans-serif;
-    color: #FFFDD0;
 }
 
 body {
     background-color: #1a1a1a;
+    color: #FFFDD0;
 }
 
 .content {
@@ -184,6 +184,7 @@ nav .projects_menu {
     box-shadow: 0 0 1em rgb(0 0 0/ .3);
     padding: .5em;
     min-width: 13em;
+    color: #FFFDD0;
 }
 
 .modal_wrapper {
@@ -194,6 +195,7 @@ nav .projects_menu {
 .close_modal {
     font-size: larger;
     align-self: flex-end;
+    color: #FFFDD0;
 }
 
 .close_modal:hover {
@@ -206,6 +208,7 @@ nav .projects_menu {
     margin-bottom: 1em;
     padding: .15em;
     border-radius: 10px;
+    color: #FFFDD0;
 }
 
 .modal_content:hover,
@@ -217,6 +220,8 @@ nav .projects_menu {
 .modal_info {
     color: white;
     opacity: .5;
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal_container::backdrop {
@@ -236,6 +241,7 @@ nav .projects_menu {
     font-size: 1rem;
     margin-top: 1em;
     outline: none;
+    color: #FFFDD0;
 }
 
 .menu_new_project {

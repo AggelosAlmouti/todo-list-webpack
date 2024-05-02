@@ -27,9 +27,7 @@ export default function inbox() {
     page.appendChild(content);
 
     //retrieve all tasks
-    // localStorage.clear()
     let tasks = retreive_all();
-    console.log(tasks)
 
     if (tasks.length !== 0) {
         for (let i = 0; i < tasks.length; i++) {
